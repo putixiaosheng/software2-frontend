@@ -1,0 +1,80 @@
+/**index.wxss**/
+.main {
+    height: 1200rpx;
+    width: 100%;
+}
+
+.mybar {
+    height: 8%;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.change_img {
+    width: 20%;
+    height: 50%;
+    z-index: 101;
+}
+
+.time_img {
+    width: 20%;
+    height: 50%;
+}
+
+.header {
+    width: 99%;
+    height: 22%;
+    box-shadow: 5rpx 5rpx 2px #888888;
+}
+
+.text {
+    width: 100%;
+    height: 50%;
+    text-align: right;
+    line-height: 70rpx;
+    align-items: center;
+}
+
+.text1 {
+    width: 100%;
+    height: 50%;
+    text-align: right;
+    font-size: 70rpx;
+    line-height: 70rpx;
+    align-items: center;
+}
+
+.menu {
+    height: 10%;
+    width: 100%;
+}
+
+.bodys {
+    width: 100%;
+    height: 60%;
+}
+
+.com_cal {
+    height: 100%;
+    width: 100%;
+}
+
+.sci_cal {
+    height: 100%;
+    width: 100%;
+}
+
+.custom-style {
+    margin-left: 20rpx;
+
+}
+
+.history {
+    word-wrap: break-word;
+}
+
+.choose_list {
+    margin-top: 100rpx;
+}

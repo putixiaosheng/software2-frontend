@@ -1,0 +1,51 @@
+<!--index.wxml-->
+<view class="main">
+    <van-toast id="van-toast" />
+    <view class="mybar">
+        <image src="/image/change.png" mode="aspectFit" class="change_img" bindtap="choose_cal">
+        </image>
+        <image src="/image/time_img.png" mode="aspectFit" class="time_img" bindtap="show_history_m"></image>
+    </view>
+    <view class="header">
+        <view class="text">{{result}}</view>
+        <view class="text1">{{formula}}</view>
+    </view>
+    <view class="menu">
+        <van-dropdown-menu>
+            <van-dropdown-item value="{{ value1 }}" options="{{ option1 }}" bind:change="change_menu" />
+        </van-dropdown-menu>
+    </view>
+    <view class="bodys">
+        <view class="com_cal" wx:if="{{value1 == 1}}">
+            <van-button wx:for="{{button}}" wx:key="index" wx:for-item="item" size="normal" custom-style="width:22%;height:18%;box-shadow: 5rpx 5rpx 2px #888888;margin-top: 10rpx;" round class="custom-style" bindtap="input_num" data-num="{{item}}">
+                {{item}}
+            </van-button>
+            <van-button size="normal" custom-style="width:22%;height:18%;box-shadow: 5rpx 5rpx 2px #888888;margin-top: 10rpx;" round class="custom-style" bindtap="commit">
+                {{equal_op}}
+            </van-button>
+        </view>
+        <view class="sci_cal" wx:if="{{value1 == 0}}">
+            <van-button wx:for="{{button1}}" wx:key="index" wx:for-item="item" size="normal" custom-style="width:22%;height:18%;box-shadow: 5rpx 5rpx 2px #888888;margin-top: 10rpx;" round class="custom-style" bindtap="input_sin" data-sin="{{item}}">
+                {{item}}
+            </van-button>
+            <van-button size="normal" custom-style="width:22%;height:18%;box-shadow: 5rpx 5rpx 2px #888888;margin-top: 10rpx;" round class="custom-style" bindtap="input_num" data-sin="^">
+                ^
+            </van-button>
+            <van-button size="normal" custom-style="width:22%;height:18%;box-shadow: 5rpx 5rpx 2px #888888;margin-top: 10rpx;" round class="custom-style" bindtap="input_num" data-sin=",">
+                ,
+            </van-button>
+        </view>
+    </view>
+    <van-popup show="{{ show_history }}" position="bottom" custom-style="height: 40%;" bind:close="close_history_m" zindex="102">
+        <van-cell-group>
+            <van-cell wx:for="{{history_content}}" wx:key="index" title="{{item.mathematical_formula}}" value="{{item.result}}" custom-class="history" title-width="150" round />
+        </van-cell-group>
+    </van-popup>
+    <van-popup show="{{ show_cal }}" position="left" bind:close="close_cal" custom-style="height:100%;width:35%" round>
+        <van-cell-group custom-class="choose_list">
+            <van-cell title="普通计算器" icon="wap-home-o" bindtap="go_navi" />
+            <van-cell title="利率计算器" icon="balance-o" bindtap="go_rate" />
+            <van-cell title="利率表" icon="cash-o" bindtap="go_rate_change" />
+        </van-cell-group>
+    </van-popup>
+</view>

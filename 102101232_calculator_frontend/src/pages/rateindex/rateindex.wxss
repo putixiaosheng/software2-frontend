@@ -1,0 +1,84 @@
+/* pages/rateindex.wxss */
+.main {
+    height: 1200rpx;
+    width: 100%;
+    background-color: rgb(247, 248, 250);
+}
+
+.mybar {
+    height: 8%;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: white;
+}
+
+.history {
+    word-wrap: break-word;
+}
+
+.change_img {
+    width: 20%;
+    height: 50%;
+    z-index: 101;
+}
+
+.time_img {
+    width: 20%;
+    height: 50%;
+}
+
+.header {
+    width: 99%;
+    height: 22%;
+    box-shadow: 5rpx 5rpx 2px #888888;
+}
+
+.text {
+    width: 100%;
+    height: 50%;
+    text-align: right;
+    font-size: 70 rpx;
+    line-height: 70rpx;
+    align-items: center;
+    background-color: white;
+}
+
+.text1 {
+    width: 100%;
+    height: 50%;
+    text-align: right;
+    font-size: 70rpx;
+    line-height: 70rpx;
+    align-items: center;
+    background-color: white;
+}
+
+.bodys {
+    width: 100%;
+    height: 60%;
+    margin-top: 50rpx;
+}
+
+.check {
+    flex: none !important;
+}
+
+.choose_word {
+    display: flex;
+    opacity: 0.6;
+    align-items: center;
+    margin-bottom: 40rpx;
+    margin-left: 20rpx;
+}
+
+.custom-style {
+    margin-left: 20rpx;
+
+}
+
+
+.choose_list {
+    margin-top: 100rpx;
+}

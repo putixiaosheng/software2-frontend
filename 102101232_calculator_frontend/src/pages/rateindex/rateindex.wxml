@@ -1,0 +1,49 @@
+<!--pages/rateindex.wxml-->
+<view class="main">
+    <view class="mybar">
+        <image src="/image/change.png" mode="aspectFit" class="change_img" bindtap="choose_cal">
+        </image>
+        <image src="/image/time_img.png" mode="aspectFit" class="time_img" bindtap="show_history_m"></image>
+    </view>
+    <view class="header" style="width: 750rpx; height: 280rpx; display: block; box-sizing: border-box">
+        <view class="text"></view>
+        <view class="text1">{{result}}</view>
+    </view>
+    <view class="bodys">
+        <view class="choose_word">选择服务类型和操作时长</view>
+        <van-cell-group>
+            <van-radio-group value="{{ ser_type }}">
+                <van-field placeholder="选择服务类型" label="服务" disabled />
+                <van-cell title="存款" clickable data-name="1" bind:click="choose_ser">
+                    <van-radio slot="right-icon" name="1" />
+                </van-cell>
+                <van-cell title="贷款" clickable data-name="2" bind:click="choose_ser">
+                    <van-radio slot="right-icon" name="2" />
+                </van-cell>
+            </van-radio-group>
+            <van-cell clickable title="活期" wx:if="{{ser_type == 1}}">
+                <van-checkbox value="{{ checked }}" bind:change="change_check" value-class="check" slot="right-icon"></van-checkbox>
+            </van-cell>
+            <van-popup show="{{ show_time }}" bind:close="close_choose_time" position="bottom" custom-style="height:50%">
+                <van-picker show-toolbar columns="{{ columns }}" bind:change="change_time" title="时长(年)" confirm-button-text="" cancel-button-text="" />
+            </van-popup>
+            <van-field model:value="{{ money }}" placeholder="请输入金额" label="金额" />
+            <van-field wx:if="{{ser_type == 1&&checked == false}}" model:value="{{ year1 }}" bindtap="show_choose_time" placeholder="请选择时长（年）" label="时长" />
+            <van-field wx:if="{{ser_type == 1&&checked == true}}" model:value="{{ year1 }}" placeholder="请输入时长（年）" label="时长" />
+            <van-field wx:if="{{ser_type == 2}}" model:value="{{ year }}" placeholder="请输入时长（年）" label="时长" />
+            <van-button type="info" size="large" bindtap="submit">提交结果</van-button>
+        </van-cell-group>
+    </view>
+    <van-popup show="{{ show_history }}" position="bottom" custom-style="height: 40%;" bind:close="close_history_m" zindex="102">
+        <van-cell-group>
+            <van-cell wx:for="{{history_content}}" wx:key="index" title="{{item.mathematical_formula}}" value="{{item.result}}" custom-class="history" title-width="150" round />
+        </van-cell-group>
+    </van-popup>
+    <van-popup show="{{ show_cal }}" position="left" bind:close="close_cal" custom-style="height:100%;width:35%" round>
+        <van-cell-group custom-class="choose_list">
+            <van-cell title="普通计算器" icon="wap-home-o" bindtap="go_navi" />
+            <van-cell title="利率计算器" icon="balance-o" bindtap="go_rate" />
+            <van-cell title="利率表" icon="cash-o" bindtap="go_rate_change" />
+        </van-cell-group>
+    </van-popup>
+</view>

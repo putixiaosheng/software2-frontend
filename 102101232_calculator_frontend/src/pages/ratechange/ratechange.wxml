@@ -1,0 +1,45 @@
+<!--pages/ratechange/ratechange.wxml-->
+<!--pages/rateindex.wxml-->
+<view class="main">
+    <van-toast id="van-toast" />
+    <view class="mybar">
+        <image src="/image/change.png" mode="aspectFit" class="change_img" bindtap="choose_cal">
+        </image>
+        <image src="/image/time_img.png" mode="aspectFit" class="time_img" bindtap="show_history_m"></image>
+    </view>
+    <view class="bodys">
+        <van-tabs active="{{ ser_type }}" color="rgb(205,232,238)" custom-sytle="tabs" bind:change="change_tab_m">
+            <view class="change_button">
+                <van-button type="info" size="small" bindtap="if_change_m">修改利率</van-button>
+            </view>
+            <van-tab title="存款利率">
+                <van-cell-group custom-class="tabs">
+                    <van-field wx:for="{{deposit}}" wx:key="index" label="{{item.title}}" custom-class="tabs_field" model:value="{{item.rate}}" input-align="right" disabled="{{disabled == true}}" bind:input="input_rate_m" data-title="{{item.title}}">
+                    </van-field>
+                </van-cell-group>
+
+            </van-tab>
+            <van-tab title="贷款利率">
+                <van-cell-group custom-class="tabs">
+                    <van-field wx:for="{{loan}}" wx:key="index" label="{{item.title}}" custom-class="tabs_field" model:value="{{item.rate}}" input-align="right" disabled="{{disabled == true}}" bind:input="input_rate_m" data-title="{{item.title}}">
+                    </van-field>
+                </van-cell-group>
+            </van-tab>
+            <van-button type="info" size="large" bindtap="submit_deposit_m" disabled="{{disabled == true}}">
+                提交结果
+            </van-button>
+        </van-tabs>
+    </view>
+    <van-popup show="{{ show_history }}" position="bottom" custom-style="height: 40%;" bind:close="close_history_m" zindex="102">
+        <van-cell-group>
+            <van-cell wx:for="{{history_content}}" wx:key="index" title="{{item.mathematical_formula}}" value="{{item.result}}" custom-class="history" title-width="150" round />
+        </van-cell-group>
+    </van-popup>
+    <van-popup show="{{ show_cal }}" position="left" bind:close="close_cal" custom-style="height:100%;width:35%" round>
+        <van-cell-group custom-class="choose_list">
+            <van-cell title="普通计算器" icon="wap-home-o" bindtap="go_navi" />
+            <van-cell title="利率计算器" icon="balance-o" bindtap="go_rate" />
+            <van-cell title="利率表" icon="cash-o" bindtap="go_rate_change" />
+        </van-cell-group>
+    </van-popup>
+</view>
